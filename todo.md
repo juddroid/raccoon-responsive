@@ -1,0 +1,8 @@
+- [] 상단 로고 제작svg
+- [] 상단 로고 hover시 크기
+- [] dark mode 도전
+- [] 이미지 경로 수정
+- [] firebase 알아보기
+- [] google hosting console 알아보기
+- [] visual section summary 둥둥
+- [] visual section bg starry

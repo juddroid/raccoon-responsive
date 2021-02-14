@@ -1,12 +1,9 @@
-@charset "UTF-8"
+@charset "UTF-8";
 
 /* COMMON  */
 
-body {
-}
-
 .body__container {
-  font-family: 'Roboto', sans-serif;
+  font-family: 'Roboto', 'Noto Sans KR', sans-serif;
   font-size: 16px;
   font-weight: 400;
   color: #333;
@@ -16,17 +13,34 @@ a {
   text-decoration: none;
 }
 
+.float--left {
+  float: left;
+}
+.float--right {
+  float: right;
+}
+/* FLOAT CLEARFIX */
+.clearfix::after {
+  content: '';
+  clear: both;
+  display: block;
+}
+
 /* BUTTON */
 .btn {
+  /* inline-flex -> flex */
+  display: flex;
+  align-items: center;
   height: 34px;
-  background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
+  padding: 0 12px;
   border: 1px solid #d5d5d5;
   border-radius: 4px;
-  display: inline-flex;
-  align-items: center;
-  padding: 0 12px;
+  font-size: 14px;
   font-weight: 500;
+  color: #333;
   line-height: 1.5;
+  text-align: center;
+  background: #eee linear-gradient(to bottom, #fcfcfc, #eee);
   cursor: pointer;
   box-sizing: border-box;
   position: relative;
@@ -40,25 +54,25 @@ a {
   width: 100%;
   height: 100%;
   background: rgba(0, 0, 0, 0.07);
-  color: #333;
 }
 
 .btn.btn--primary {
-  border: 1px solid #65b836;
+  /* 나중에 버튼 색상 바꿀까? */
+  border: 1px solid #1e212d;
   color: #fff;
-  background: #55a532 linear-gradient(#91dd70, #55ae2e);
+  background: #383e56 linear-gradient(#383e56, #252525);
 }
 
 /* INPUT */
 .input--text {
   height: 34px;
   padding: 0 10px;
+  font-size: 16px;
   border: 1px solid #ddd;
   border-radius: 5px;
-  box-sizing: border-box;
   outline: none;
+  box-sizing: border-box;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.075);
-  font-size: 16px;
 }
 
 .input--text:focus {
@@ -67,29 +81,24 @@ a {
 }
 
 /* Vendor Prefix(실험적 기능) */
-/* prettier-ignore */
-.input--text::-webkit-input-placeholder { color: #cacaca; }
-/* prettier-ignore */
-.input--text::-ms-input-placeholder { color: #cacaca; }
-/* prettier-ignore */
-.input--text::-moz-input-placeholder { color: #cacaca; }
 
-/* FLOAT CLEARFIX */
-.clearfix::after {
-  content: '';
-  clear: both;
-  display: block;
+.input--text::-webkit-input-placeholder {
+  color: #cacaca;
 }
-.float--left {
-  float: left;
+
+.input--text::-ms-input-placeholder {
+  color: #cacaca;
 }
-.float--right {
-  float: right;
+
+.input--text::-moz-input-placeholder {
+  color: #cacaca;
 }
 
 /* SUMMARY */
-.summary {
-}
+
+/* .summary {
+  font-family: 'Noto Sans KR';
+} */
 
 .summary__title {
   font-size: 38px;
@@ -120,7 +129,7 @@ a {
 
 /* HEADER */
 header {
-  border-bottom: 1px solid #b097fc9f;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.75);
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.75);
   /* background: #b197fc; */
   background: #fff;
@@ -145,8 +154,8 @@ header .logo a {
   background: url('../img/favicon/favicon-96x96.png');
   background-position: center;
   background-size: cover;
-  width: 70px;
-  height: 70px;
+  width: 40px;
+  height: 40px;
   display: block;
   text-indent: -9999px;
 }
@@ -165,11 +174,11 @@ header .main-menu li a {
   display: block;
   padding: 10px;
   /* color: #3c4146; */
-  color: #333;
+  color: #3c4146;
 }
 
 header .main-menu li a:hover {
-  color: #3c4146;
+  color: #4078c0;
 }
 
 header .mode-group {
@@ -178,6 +187,7 @@ header .mode-group {
   height: 100%;
 }
 
+/* order는 display가 flex인 상황에서만 사용할 수 있다. */
 header .btn-group {
   order: 2;
   display: flex;
@@ -210,20 +220,31 @@ header .sub-menu li a {
   padding: 8px;
   display: block;
   font-size: 13px;
-  color: #333;
+  color: #3c4146;
 }
 
 header .sub-menu li a:hover {
-  color: #3c4146;
+  color: #4078c0;
+}
+
+#toggle-btn {
+  display: none;
+  background: url('../img/toggle-btn.svg');
+  width: 18px;
+  height: 24px;
+  position: absolute;
+  top: 16px;
+  right: 20px;
+  cursor: pointer;
+  text-indent: -9999px;
 }
 
 /* VISUAL */
 .section--visual {
-  background-image: url('../img/KakaoTalk_Photo_2016-08-13-15-44-15\ \(1\).jpg');
+  background-image: url('../img/bg.jpg');
   background-repeat: no-repeat;
   background-position: bottom left;
   background-size: cover;
-  position: relative;
 }
 
 .section--visual::before {
@@ -237,7 +258,7 @@ header .sub-menu li a:hover {
 }
 
 .section--visual .inner {
-  padding: 160px 0px;
+  padding: 160px 0;
   display: flex;
 }
 
@@ -250,6 +271,7 @@ header .sub-menu li a:hover {
 .section--visual .summary__title {
   color: #fff;
   text-shadow: 0 1px 1px rgba(0, 0, 0, 0.25), 0 1px 25px rgba(0, 0, 0, 0.75);
+  /* font-size: 54px; */
 }
 
 .section--visual .summary__description {
@@ -274,7 +296,6 @@ header .sub-menu li a:hover {
 #sign-form .input--text {
   width: 100%;
   height: 40px;
-  font-size: 14px;
 }
 
 #sign-form .caption {
@@ -336,8 +357,8 @@ header .sub-menu li a:hover {
 }
 
 .section--feature .tiles ul {
-  /* display: grid;
-  grid-template-columns: repeat(4, 1fr); */
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
 }
 
 .section--feature .tiles li {
@@ -346,8 +367,9 @@ header .sub-menu li a:hover {
   line-height: 1.5;
   border-right: 1px solid #e5e5e5;
   box-sizing: border-box;
-  float: left;
-  width: 25%;
+  /* float: left; */
+  padding-bottom: 10px;
+  /* max-width: 25%; */
 }
 
 .section--feature .tiles li:last-child {
@@ -355,13 +377,16 @@ header .sub-menu li a:hover {
 }
 
 .section--feature .tiles li img {
+  /* padding: 14px 10% 24px;
+  box-sizing: border-box; */
   max-width: 100%;
+  object-fit: cover;
 }
 
 .section--feature .tiles li h3 {
-  font-size: 18px;
-  font-weight: 500;
-  margin-bottom: 10px;
+  font-size: 16px;
+  font-weight: 800;
+  /* margin-bottom: 5px; */
 }
 
 .section--feature .tiles li p {
@@ -370,8 +395,6 @@ header .sub-menu li a:hover {
 }
 
 /* WHERE IS */
-.section--where-is {
-}
 
 .section--where-is .inner {
   padding-top: 80px;
@@ -401,7 +424,7 @@ header .sub-menu li a:hover {
   display: flex;
   border: 1px solid #e5e5e5;
   border-radius: 6px;
-  box-sizing: border-box;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
 }
 
 .section--pricing .card .cell {
@@ -417,7 +440,7 @@ header .sub-menu li a:hover {
 }
 
 .section--pricing .card .cell--description {
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.5;
   flex: 1;
@@ -425,8 +448,6 @@ header .sub-menu li a:hover {
 }
 
 /* FOOTER */
-footer {
-}
 
 footer .inner {
   padding: 50px 0;
@@ -441,6 +462,10 @@ footer .site-links li {
   font-size: 12px;
   margin-right: 10px;
   color: #767676;
+}
+
+footer .site-links li:last-child {
+  margin-right: 0;
 }
 
 footer .site-links li a {
@@ -465,28 +490,4 @@ footer .logo {
 
 footer .logo:hover svg {
   fill: #4078c0;
-}
-
-/* MEDIA */
-
-/* 에상대로 적용이 안 될때 이유: 대부분 오타 혹은 우선순위 */
-@media (max-width: 1024px) {
-  header.section .inner {
-    max-width: none;
-    height: auto;
-    padding: 0 20px;
-  }
-
-  header .menu-group,
-  header.sign-group {
-    float: none;
-  }
-
-  header .toggle {
-    display: none;
-  }
-
-  #toggle-btn {
-    background: url();
-  }
 }
